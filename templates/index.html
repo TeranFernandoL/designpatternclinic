@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block titulo %}
+    Home
+{% endblock titulo %}
+
+{% block cuerpo %}
+    {% include "navbar.html" %}
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center teal-text text-lighten-1">Centro Clínico Moderno</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">Un centro médico moderno, pensado para su salud.</h5>
+                </div>
+                <div class="center">
+                    <a class="btn btn-primary" href="{% url 'clinico:registro' %}" role="button">Obtén una cita</a>
+                    <a class="btn btn-primary" href="{% url 'clinico:registro_medico' %}" role="button">Conviertete en
+                        Doctor</a>
+                </div>
+                <br><br>
+
+            </div>
+        </div>
+        <div class="parallax"><img src="{% static 'images/home/portada.png' %}" alt="Unsplashed background img 1"></div>
+    </div>
+    <div class="container">
+        <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">work</i></h2>
+                        <h5 class="center">Misión</h5>
+
+                        <p class="light">
+                            Crear, mantener y marcar la diferencia en servicios de salud integrales adaptados a las
+                            necesidades y exigencias de nuestros pacientes, apoyados en nuestro capital humano, la
+                            excelencia médico asistencial y la búsqueda de vanguardia tecnológica, contribuyendo con la
+                            calidad de vida de la sociedad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">visibility</i></h2>
+                        <h5 class="center">Visión</h5>
+
+                        <p class="light">
+                            Ser reconocidos como el centro de salud de referencia nacional e internacional porque
+                            brindamos soluciones integrales de excelencia en Medicina
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center brown-text"><i class="material-icons">contact_phone</i></h2>
+                        <h5 class="center">Contacto</h5>
+
+                        <p class="light">
+                            <i class="material-icons">my_location</i>en mi jai
+                        </p>
+                        <p class="light">
+                            <i class="material-icons">perm_phone_msg</i>920814529
+                        </p>
+                        <p class="light">
+                            <i class="material-icons">email</i>luis.teran@unmsm.edu.pe
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock cuerpo %}

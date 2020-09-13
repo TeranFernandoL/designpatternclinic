@@ -1,0 +1,56 @@
+<!--Se Cargan los Archivos estaticos-->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>
+        {% block titulo %}
+
+        {% endblock titulo %}
+    </title>
+    {# Cargamos la librería #}
+    {% load bootstrap4 %}
+    {# CSS Bootstrap #}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+</head>
+<body>
+{% block cuerpo %}
+
+{% endblock cuerpo %}
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+
+            <div class="col l6 s12">
+                <h5 class="white-text">Estamos buscando Talento</h5>
+                <p class="grey-text text-lighten-4">
+                    Si eres un profesional de la medicina, ¡Contactanos!, estamos necesitando de tu experiencia, en los
+                    campos de Ginecología, Cardiología, Obstetricia, Pediatría y otros.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-copyright">
+        <div class="container">
+            Desarrollado por <a class="brown-text text-lighten-3" href="https://www.facebook.com/BioRazor">Luis Teran </a>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/materialize.min.js' %}"></script>
+<script src="{% static 'js/init.js' %}"></script>
+
+</body>
+</html>

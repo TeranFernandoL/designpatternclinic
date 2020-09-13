@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+    {% include "navbar.html" %}
+    {% if user.is_authenticated %}
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h3><i class="small material-icons">assignment_ind</i> PERFIL</h3>
+                    <div class="section">
+                        <form action="" method="post" class="form-site col-md-12">
+                            {% csrf_token %}
+                            <fieldset class="form-group col-md-12">
+                                <label for="user_nombre">Nombre (*)</label>
+                                <input autofocus="autofocus" class="form-control" id="user_nombre"
+                                       value="{{ form.nombre.value }}" name="{{ form.nombre.name }}"
+                                       type="text">
+                                {% if form.nombre.errors %}
+                                    {{ form.nombre.errors }}
+                                {% endif %}
+                            </fieldset>
+                            <fieldset class="form-group col-md-12">
+                                <label for="user_apellidos">Apellidos (*)</label>
+                                <input autofocus="autofocus" class="form-control" id="user_apellido"
+                                       value="{{ form.apellido.value }}"
+                                       name="{{ form.apellido.name }}"
+                                       type="text">
+                                {% if form.apellido.errors %}
+                                    {{ form.apellido.errors }}
+                                {% endif %}
+                            </fieldset>
+
+                            <fieldset class="form-group col-md-6">
+                                <label for="user_telefono">Teléfono</label>
+                                <input autofocus="autofocus" class="form-control" id="user_telefono"
+                                       value="{{ form.telefono.value }}"
+                                       name="{{ form.telefono.name }}"
+                                       type="text">
+                                {% if form.telefono.errors %}
+                                    {{ form.telefono.errors }}
+                                {% endif %}
+                            </fieldset>
+                            <fieldset class="form-group col-md-6">
+                                <label for="user_direccion">Direccion</label>
+                                <input autofocus="autofocus" class="form-control" id="user_direccion"
+                                       value="{{ form.direccion.value }}"
+                                       name="{{ form.direccion.name }}"
+                                       type="text">
+                                {% if form.direccion.errors %}
+                                    {{ form.direccion.errors }}
+                                {% endif %}
+                            </fieldset>
+                            <fieldset class="form-group col-md-12">
+                                <label for="user_cedula">Cedula</label>
+                                <input autofocus="autofocus" class="form-control" id="user_cedula"
+                                       value="{{ form.cedula.value }}"
+                                       name="{{ form.cedula.name }}"
+                                       type="text">
+                                {% if form.cedula.errors %}
+                                    {{ form.cedula.errors }}
+                                {% endif %}
+                            </fieldset>
+                            {% if form.type.value == "PACIENTE" %}
+                                <fieldset class="form-group col-md-12">
+                                    <label for="user_descripcion">Descripcion</label>
+                                    <p>{{ paciente.descripcion }}</p>
+                                    {% if paciente.descripcion.errors %}
+                                        {{ paciente.descripcion.errors }}
+                                    {% endif %}
+                                </fieldset>
+                            {% endif %}
+                            {% if form.type.value == 'MEDICO' %}
+                                <fieldset class="form-group col-md-12">
+                                    <label for="user_especialidad"></label>
+                                    <p>{{ medico.especialidad }}</p>
+                                    {% if medico.especialidad.errors %}
+                                        {{ medico.especialidad.errors }}
+                                    {% endif %}
+                                </fieldset>
+                                <fieldset class="form-group col-md-12">
+                                    <label for="user_cedula">Cedula</label>
+                                    <p>{{ medico.cedula }}</p>
+                                    {% if medico.cedula.errors %}
+                                        {{ medico.cedula.errors }}
+                                    {% endif %}
+                                </fieldset>
+                            {% endif %}
+                            <div class="col-md-12">
+                                <input type="submit" value="Actualizar información" class="btn btn-default btn-site"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock cuerpo %}

@@ -1,0 +1,19 @@
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="{% url 'home:home' %}" class="brand-logo">CCM</a>
+        <ul class="right hide-on-med-and-down">
+            {% if user.is_authenticated %}
+                {% if user.type == "MEDICO"%}
+                    <li><a href="{% url 'clinico:dashboard_medico' %}">Mi Menú</a></li>
+                {% else %}
+                    <li><a href="{% url 'clinico:dashboard' %}">Mi Menú</a></li>
+                {% endif %}
+                <li><a href="{% url 'clinico:logout' %}">Salir</a></li>
+            {% else %}
+                <li><a href="{% url 'clinico:login' %}"><i class="tiny material-icons left">input</i> Ingresa</a></li>
+                <li><a href="{% url 'clinico:login_medico' %}"><i class="tiny material-icons left">input</i> Ingresa
+                    como doctor</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+    {% include "navbar.html" %}
+    <div class="row">
+        {% if user.is_authenticated %}
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Medico</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cita in citas %}
+                    <tr>
+                        <th scope="row">{{cita.id}}</th>
+                        <td>{{cita.paciente}}</td>
+                        <td>{{cita.medico}}</td>
+                        <td>{{ cita.fecha }}</td>
+                        <td>{{ cita.estado }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+                            <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock cuerpo %}
