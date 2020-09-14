@@ -56,17 +56,6 @@ class Usuario(AbstractBaseUser, PermissionsMixin, Person):
         return self.username
 
 
-class Especialidad(models.Model):
-    nombre = models.CharField(blank=False, max_length=50)
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        verbose_name = 'Especialidad'
-        verbose_name_plural = 'Especialidades'
-
-
 class Medico(TimeStampedModel):
     usuario = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     especialidad = models.CharField(blank=True, null=True, max_length=200)
@@ -170,90 +159,7 @@ class Cita(models.Model, Subject):
         verbose_name_plural = 'Citas'
 
 
-class Medicamento(models.Model, Observer):
-    class MedicamentoBasico(Component):
-        def operation(self):
-            return None
-
-    class MedicamentoInyectable(Decorator):
-        def operation(self):
-            return self.component.operation()
-
-    class MedicamentoCovid(Decorator):
-        def operation(self):
-            return self.component.operation()
-
-    nombre = models.CharField(blank=False, max_length=50)
-    presentacion = models.CharField(blank=False, max_length=50)
-    volumen = models.CharField(blank=False, max_length=50)
-    descripcion = models.TextField(blank=True)
-
-    def __str__(self):
-        return ('%s - %s') % (self.nombre, self.presentacion)
-
-    def client_code(self, component):
-        component.operation()
-        return None
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        super(Medicamento, self).save()
-        simple = self.MedicamentoBasico()
-        self.client_code(simple)
-        decorator1 = self.MedicamentoInyectable(simple)
-        self.client_code(decorator1)
-        return None
-
-    def update(self, subject: Subject) -> None:
-        print("por favoorrrr :´v ")
-        self.nombre = 'vicvaporum'
-        self.presentacion = "hola soy german"
-        self.volumen = "gaaa"
-        self.descripcion = "miau"
-        self.save(force_insert=True)
-
-    class Meta:
-        verbose_name = 'Medicamento'
-        verbose_name_plural = 'Medicamentos'
 
 
-class Consulta(models.Model, Strategy):
-    paciente = models.ForeignKey(Paciente, blank=True, null=True, on_delete=models.CASCADE)
-    medico = models.ForeignKey(Medico, on_delete=models.CASCADE, blank=True, null=True)
-    diagnostico = models.TextField(blank=False)
-    fecha = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return ('%s - %s') % (self.paciente, self.medico)
-
-    def do_algorithm(self, data):
-        print("un ga y a seguir con esta webada")
-        return "que chucha fue "
-
-    class Meta:
-        verbose_name = 'Consulta'
-        verbose_name_plural = 'Consultas'
 
 
-class Tratamiento(models.Model):
-    consulta = models.ForeignKey(Consulta, blank=True, null=True, on_delete=models.CASCADE)
-    medicamento = models.ManyToManyField(Medicamento, blank=True)
-    descripcion = models.TextField(blank=False)
-
-    def __str__(self):
-        return ('%s - %s') % (self.consulta, self.medicamento)
-
-    class Meta:
-        verbose_name = 'Tratamiento'
-        verbose_name_plural = 'Tratamientos'
-
-
-class Consultorio(SingletonModel):
-    nombre = models.CharField(blank=False, max_length=50)
-    direccion = models.TextField(blank=False)
-    mision = models.TextField(blank=False)
-    vision = models.TextField(blank=False)
-    eslogan = models.CharField(blank=False, max_length=150)
-    telefono = models.CharField(blank=False, max_length=50)
-    correo = models.EmailField(blank=False)
-    foto = models.ImageField(upload_to='home')

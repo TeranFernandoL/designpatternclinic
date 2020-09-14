@@ -6,12 +6,10 @@ class Context:
 
     _state = None
 
-    def __init__(self, state: State) -> None:
+    def __init__(self, state):
         self.transition_to(state)
 
-    def transition_to(self, state: State):
-
-        print(f"Context: Transition to {type(state).__name__}")
+    def transition_to(self, state):
         self._state = state
         self._state.context = self
 
@@ -43,21 +41,16 @@ class State:
 
 class ConcreteStateA(State):
     def handle1(self):
-        print("ConcreteStateA handles request1.")
-        print("ConcreteStateA wants to change the state of the context.")
         self.context.transition_to(ConcreteStateB())
 
     def handle2(self):
-        print("ConcreteStateA handles request2.")
-
+        pass
 
 class ConcreteStateB(State):
     def handle1(self):
-        print("ConcreteStateB handles request1.")
+        pass
 
     def handle2(self):
-        print("ConcreteStateB handles request2.")
-        print("ConcreteStateB wants to change the state of the context.")
         self.context.transition_to(ConcreteStateA())
 
 

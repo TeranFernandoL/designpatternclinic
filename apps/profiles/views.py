@@ -151,7 +151,7 @@ class CrearCita(LoginRequiredMixin, CreateView):
         send_email = SendEmail()
         cita.attach(send_email)
         cita.some_business_logic()
-        messages.add_message(self.request, messages.SUCCESS, 'Gracias por añadir a este mongol.')
+        messages.add_message(self.request, messages.SUCCESS, 'Gracias por añadir.')
         return super(ModelFormMixin, self).form_valid(form)
 
     def get_success_url(self):
