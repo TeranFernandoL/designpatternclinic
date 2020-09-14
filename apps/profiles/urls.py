@@ -22,6 +22,7 @@ urlpatterns = [
     path('miscitascanceladas/', ListCitasPacienteCanceledView.as_view(), name='mis_citas_canceled'),
     path('miscitasregistradas/', ListCitasPacienteRegistradaView.as_view(), name='mis_citas_registrada'),
     path('miscitasterminadas/', ListCitasPacienteCompletedView.as_view(), name='mis_citas_completada'),
-    path('detailcita/<int:pk>', CitaProfileView.as_view(), name='mis_citas_detail')
+    path('detailcita/<int:pk>', CitaProfileView.as_view(), name='mis_citas_detail'),
+    path('export/<int:pk>', DownloadPaciente.as_view(), name='export'),
 
 ]

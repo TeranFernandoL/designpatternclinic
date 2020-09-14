@@ -162,3 +162,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'hagisolomon2@gmail.com'
 EMAIL_HOST_PASSWORD = 'JQGLFTP201710'
 AUTH_USER_MODEL = 'profiles.Usuario'
+CONTACT_EMAIL = 'hagisolomon2@gmail.com'

@@ -23,6 +23,17 @@
                             {{ form.motivo.errors }}
                         {% endif %}
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="user_type">Tipo de Cita (*)</label>
+                        <select class="form-control" id="user_type" name="{{ form.type.name }}">
+                            {% for choice in form.type.field.choices %}
+                                <option value="{{ choice.0 }}"> {{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                        {% if form.type.errors %}
+                            {{ form.type.errors }}
+                        {% endif %}
+                    </div>
                     <div>
                         <label for="user_fecha">Fecha (*)</label>
                         <input class="form-control" id="user_fecha"

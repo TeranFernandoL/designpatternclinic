@@ -2,6 +2,7 @@ from django import forms
 import warnings
 from .models import *
 from django.contrib.auth import authenticate, get_user_model
+from .patterns.strategy import Context
 
 
 class AuthenticationForm(forms.Form):
@@ -221,15 +222,27 @@ class RegistroCitaForm(forms.ModelForm):
     medico = forms.ModelChoiceField(queryset=Medico.objects.all(),
                                     widget=forms.Select(attrs={'class': 'form-control'}))
     fecha = forms.DateField(required=False)
+    type = forms.ChoiceField(choices=(
+        (Cita.DOMICILIO, 'DOMICILIO'), (Cita.NORMAL, 'NORMAL'), (Cita.EMERGENCIA, 'EMERGENCIA')))
 
     class Meta:
         model = Cita
-        fields = ['medico', 'fecha', 'motivo']
+        fields = ['medico', 'fecha', 'motivo', 'type']
 
     def save(self, commit=True, user=None):
         cita = Cita.objects.create(medico=self.cleaned_data.get('medico'), fecha=self.cleaned_data.get('fecha'),
-                                   motivo=self.cleaned_data.get('motivo'), estado='REGISTRADO')
-        medicamento = Medicamento()
-        cita.attach(medicamento)
-        cita.some_business_logic()
+                                   motivo=self.cleaned_data.get('motivo'), estado='REGISTRADO',
+                                   type=self.cleaned_data.get('type'))
+        strategy = self.reserva(self.cleaned_data.get('type'))
+        context = Context(strategy)
+        context.do_some_business_logic(cita)
         return cita
+
+    def reserva(self, type):
+        if type == "DOMICILIO":
+            strategy = Cita.CitaDomicilio()
+        elif type == "NORMAL":
+            strategy = Cita.CitaNormal()
+        else:
+            strategy = Cita.CitaEmergencia()
+        return strategy

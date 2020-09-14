@@ -89,30 +89,36 @@ class Paciente(TimeStampedModel):
     def __str__(self):
         return "{}-{}".format(self.usuario.nombre, self.usuario.apellido)
 
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        super(Paciente, self).save()
-        context = Context(Cita())
-        context.do_some_business_logic()
-        return None
-
     class Meta:
         verbose_name = 'Paciente'
         verbose_name_plural = 'Pacientes'
 
 
-class Cita(models.Model, Subject, Strategy):
+class Cita(models.Model, Subject):
+    class CitaNormal(Strategy):
+        def do_algorithm(self, data):
+            pass
+
+    class CitaEmergencia(Strategy):
+        def do_algorithm(self, data):
+            data.sala = "la sala esta ocupada por el paciente de esta cita"
+            data.save()
+            pass
+
+    class CitaDomicilio(Strategy):
+        def do_algorithm(self, data):
+            data.domicilio = True
+            data.save()
+            pass
+
     class State(Enum):
         REGISTRADO = 'REGISTRADO'
         CANCELED = 'CANCELED'
         TERMINADO = 'TERMINADO'
 
-    class Type(Enum):
-        NORMAL = 'NORMAL'
-        EMERGENCIA = 'EMERGENCIA'
-        DOMICILIO = 'DOMICILIO'
-
-    _state: int = None
+    NORMAL = 'NORMAL'
+    EMERGENCIA = 'EMERGENCIA'
+    DOMICILIO = 'DOMICILIO'
 
     _observers: List[Observer] = []
 
@@ -122,12 +128,17 @@ class Cita(models.Model, Subject, Strategy):
     motivo = models.TextField(blank=True, null=True)
     estado = models.CharField(blank=True, null=True, max_length=200,
                               choices=[(item.name, item.value) for item in State])
-    type = models.CharField(blank=True, null=True, max_length=200, choices=[(item.name, item.value) for item in Type])
+    type = models.CharField(blank=True, null=True, max_length=200, choices=(
+        (NORMAL, "NORMAL"), (EMERGENCIA, "EMERGENCIA"), (DOMICILIO, "DOMICILIO")
+    ))
+    sala = models.CharField(max_length=200, blank=True, null=True)
+    domicilio = models.BooleanField(default=False)
     diagnostico = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return '{}'.format(self.id)
 
+    # Patron Observer
     def attach(self, observer: Observer) -> None:
         self._observers.append(observer)
 
@@ -139,11 +150,20 @@ class Cita(models.Model, Subject, Strategy):
             observer.update(self)
 
     def some_business_logic(self) -> None:
-        self._state = datetime.datetime.now().hour
         self.notify()
 
-    def do_algorithm(self, data):
-        return "aqui no ha pasado nada "
+    # Final del Patron Observer
+    def nombre_paciente(self):
+        usuario = self.paciente.usuario
+        return usuario.nombre
+
+    def apellido_paciente(self):
+        usuario = self.paciente.usuario
+        return usuario.apellido
+
+    def direccion_paciente(self):
+        usuario = self.paciente.usuario
+        return usuario.direccion
 
     class Meta:
         verbose_name = 'Cita'

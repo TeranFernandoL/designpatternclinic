@@ -13,6 +13,10 @@ from django.views.generic.edit import ModelFormMixin
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from .patterns.observer import Subject, Observer
+import reportlab
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
 
 
 class UserRegisterView(AnonymousRequiredMixin, CreateView):
@@ -144,6 +148,9 @@ class CrearCita(LoginRequiredMixin, CreateView):
         cita = Cita.objects.get(id=self.object.id)
         cita.paciente = paciente
         cita.save()
+        send_email = SendEmail()
+        cita.attach(send_email)
+        cita.some_business_logic()
         messages.add_message(self.request, messages.SUCCESS, 'Gracias por añadir a este mongol.')
         return super(ModelFormMixin, self).form_valid(form)
 
@@ -229,3 +236,49 @@ class CancelCitaView(View, LoginRequiredMixin):
         cita.estado = 'CANCELED'
         cita.save()
         return redirect(reverse_lazy('clinico:mis_citas'))
+
+
+class JsonPaciente:
+    def new_view(self, subject):
+        json_paciente = {
+            'nombre': subject.nombre_paciente(),
+            'apellido': subject.apellido_paciente(),
+            'direccion': subject.direccion_paciente(),
+            'fecha': subject.fecha,
+            'motivo': subject.motivo,
+            'estado': subject.estado
+        }
+        return json_paciente
+
+
+class ExportPdf:
+    def some_view(self, subject):
+        buffer = io.BytesIO()
+        p = canvas.Canvas(buffer)
+        p.drawString(200, 400, subject.nombre_paciente())
+        p.drawString(200, 300, subject.apellido_paciente())
+        p.drawString(200, 200, subject.direccion_paciente())
+        p.drawString(200, 100, subject.motivo)
+        p.drawString(200, 500, subject.estado)
+        p.drawString(200, 50,  subject.diagnostico)
+        p.showPage()
+        p.save()
+        buffer.seek(0)
+        return buffer
+
+
+class Adapter(JsonPaciente, ExportPdf):
+
+    def new_view(self, subject):
+        return self.some_view(subject)
+
+
+class DownloadPaciente(View, LoginRequiredMixin):
+    def adapter_code(self, json_paciente, subject):
+        return json_paciente.new_view(subject)
+
+    def get(self, *args, **kwargs):
+        cita = Cita.objects.get(id=self.kwargs['pk'])
+        adapter = Adapter()
+        buffer = self.adapter_code(adapter, cita)
+        return FileResponse(buffer, as_attachment=True, filename='hello.pdf')

@@ -25,6 +25,8 @@
                         <td>
                             <a href="{% url 'clinico:mis_citas_detail' pk=cita.id %}" class="btn btn-site btn-lost">
                                 Ver Diagnostico </a>
+                            <a href="{% url 'clinico:export' pk=cita.id %}" class="btn btn-site btn-lost">
+                                Ver PDF </a>
                         </td>
                     </tr>
                 {% endfor %}
