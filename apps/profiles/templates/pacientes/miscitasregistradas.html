@@ -23,14 +23,8 @@
                         <td>{{ cita.fecha }}</td>
                         <td>{{ cita.estado }}</td>
                         <td>
-                            {% if cita.estado == 'REGISTRADO' %}
-                                <a href="{% url 'clinico:cancel_cita' pk=cita.id %}" class="btn btn-site btn-lost">
-                                    Cancelar </a>
-                            {% endif %}
-                            {% if cita.estado == 'COMPLETADO' %}
-                                <a href="{% url 'clinico:mis_citas_detail' pk=cita.id %}" class="btn btn-site btn-lost">
-                                    Ver Diagnostico </a>
-                            {% endif %}
+                            <a href="{% url 'clinico:cancel_cita' pk=cita.id %}" class="btn btn-site btn-lost">
+                                Cancelar </a>
                         </td>
                     </tr>
                 {% endfor %}

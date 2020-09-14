@@ -11,7 +11,6 @@
                     <th scope="col">Medico</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -22,16 +21,6 @@
                         <td>{{ cita.medico }}</td>
                         <td>{{ cita.fecha }}</td>
                         <td>{{ cita.estado }}</td>
-                        <td>
-                            {% if cita.estado == 'REGISTRADO' %}
-                                <a href="{% url 'clinico:cancel_cita' pk=cita.id %}" class="btn btn-site btn-lost">
-                                    Cancelar </a>
-                            {% endif %}
-                            {% if cita.estado == 'COMPLETADO' %}
-                                <a href="{% url 'clinico:mis_citas_detail' pk=cita.id %}" class="btn btn-site btn-lost">
-                                    Ver Diagnostico </a>
-                            {% endif %}
-                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth import logout
 from django.contrib import auth
 from braces.views import LoginRequiredMixin, AnonymousRequiredMixin
-from django.views.generic import CreateView, View, UpdateView, ListView
+from django.views.generic import CreateView, View, UpdateView, ListView, DetailView
 from class_based_auth_views.views import LoginView
 from .models import *
 from .functions import *
@@ -11,6 +11,7 @@ from .forms import *
 from django.contrib import messages
 from django.views.generic.edit import ModelFormMixin
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 from .patterns.observer import Subject, Observer
 
 
@@ -64,6 +65,31 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         return super(ModelFormMixin, self).form_valid(form)
 
 
+class UpdateCitaView(LoginRequiredMixin, UpdateView):
+    model = Cita
+    template_name = 'doctores/diagnostico.html'
+    context_object_name = 'user'
+    form_class = UpdateCitaForm
+    success_url = reverse_lazy('clinico:mis_citas_medicos')
+
+    def get_object(self, queryset=None):
+        cita = Cita.objects.get(id=self.kwargs['pk'])
+        return cita
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdateCitaView, self).get_context_data(**kwargs)
+        context['cita'] = self.get_object()
+        return context
+
+    def form_valid(self, form):
+        self.object = form.save()
+        cita = Cita.objects.get(id=self.object.id)
+        cita.estado = "TERMINADO"
+        cita.save()
+        messages.add_message(self.request, messages.SUCCESS, 'Informacion editada.')
+        return super(ModelFormMixin, self).form_valid(form)
+
+
 class Dashboard(LoginRequiredMixin, TemplateView):
     login_url = 'clinico:login'
     template_name = 'pacientes/dashboard.html'
@@ -107,15 +133,6 @@ class LogoutView(View):
         return redirect(reverse_lazy('home:home'))
 
 
-class SolicitudCita(TemplateView):
-    template_name = 'pacientes/cita.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(SolicitudCita, self).get_context_data(**kwargs)
-        context['paciente'] = Paciente.objects.get(usuario=self.request.user.id)
-        return context
-
-
 class CrearCita(LoginRequiredMixin, CreateView):
     template_name = 'pacientes/crearcita.html'
     model = Cita
@@ -134,6 +151,15 @@ class CrearCita(LoginRequiredMixin, CreateView):
         return reverse_lazy('clinico:dashboard')
 
 
+class CitaProfileView(DetailView, LoginRequiredMixin):
+    template_name = 'pacientes/detailcita.html'
+    model = Cita
+    context_object_name = 'cita'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Cita, id=self.kwargs['pk'])
+
+
 class ListCitasView(ListView, LoginRequiredMixin):
     template_name = 'pacientes/miscitas.html'
     context_object_name = 'citas'
@@ -141,3 +167,65 @@ class ListCitasView(ListView, LoginRequiredMixin):
 
     def get_queryset(self):
         return Cita.objects.filter(paciente=self.request.user.paciente).order_by('id')
+
+
+class ListCitasPacienteCanceledView(ListView, LoginRequiredMixin):
+    template_name = 'pacientes/miscitascanceled.html'
+    context_object_name = 'citas'
+    model = Cita
+
+    def get_queryset(self):
+        return Cita.objects.filter(paciente=self.request.user.paciente, estado='CANCELED').order_by('id')
+
+
+class ListCitasPacienteRegistradaView(ListView, LoginRequiredMixin):
+    template_name = 'pacientes/miscitasregistradas.html'
+    context_object_name = 'citas'
+    model = Cita
+
+    def get_queryset(self):
+        return Cita.objects.filter(paciente=self.request.user.paciente, estado='REGISTRADO').order_by('id')
+
+
+class ListCitasPacienteCompletedView(ListView, LoginRequiredMixin):
+    template_name = 'pacientes/miscitascompletadas.html'
+    context_object_name = 'citas'
+    model = Cita
+
+    def get_queryset(self):
+        return Cita.objects.filter(paciente=self.request.user.paciente, estado='TERMINADO').order_by('id')
+
+
+class ListCitasMedicoView(ListView, LoginRequiredMixin):
+    template_name = 'doctores/citasmedicogeneral.html'
+    context_object_name = 'citas'
+    model = Cita
+
+    def get_queryset(self):
+        return Cita.objects.filter(medico=self.request.user.medico).exclude(estado='CANCELED').order_by('id')
+
+
+class ListCitasDiagnosticadasView(ListView, LoginRequiredMixin):
+    template_name = 'doctores/citasdiagnosticadas.html'
+    context_object_name = 'citas'
+    model = Cita
+
+    def get_queryset(self):
+        return Cita.objects.filter(medico=self.request.user.medico, estado='TERMINADO').order_by('id')
+
+
+class ListCitasDiagnosticarView(ListView, LoginRequiredMixin):
+    template_name = 'doctores/citasrevisar.html'
+    context_object_name = 'citas'
+    model = Cita
+
+    def get_queryset(self):
+        return Cita.objects.filter(medico=self.request.user.medico, estado='REGISTRADO').order_by('id')
+
+
+class CancelCitaView(View, LoginRequiredMixin):
+    def get(self, *args, **kwargs):
+        cita = Cita.objects.get(id=self.kwargs['pk'])
+        cita.estado = 'CANCELED'
+        cita.save()
+        return redirect(reverse_lazy('clinico:mis_citas'))

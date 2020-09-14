@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34f1e8d9-7c5d-4388-93f9-9a7f05836f25" name="Default Changelist" comment="" />
+    <list default="true" id="34f1e8d9-7c5d-4388-93f9-9a7f05836f25" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/profiles/migrations/0011_cita_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/doctores/citasdiagnosticadas.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/doctores/citasmedicogeneral.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/doctores/citasrevisar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/doctores/diagnostico.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/pacientes/detailcita.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/pacientes/miscitascanceled.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/pacientes/miscitascompletadas.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/profiles/templates/pacientes/miscitasregistradas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/55a7506d-aaf0-4774-abad-adbd184746ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/55a7506d-aaf0-4774-abad-adbd184746ce.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/templates/doctores/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/templates/doctores/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/templates/pacientes/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/templates/pacientes/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/templates/pacientes/miscitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/templates/pacientes/miscitas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +92,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1gzGdHtDCyvG9ZL85EpTf2cBJOb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -82,17 +105,17 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/apps/profiles/templates" />
-      <recent name="$PROJECT_DIR$/static/images" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/apps/profiles/templates/clinico" />
       <recent name="$PROJECT_DIR$/apps" />
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/base" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/apps/profiles/templates" />
+      <recent name="$PROJECT_DIR$/static/images" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -273,12 +296,26 @@
       <workItem from="1599714887804" duration="14097000" />
       <workItem from="1599783068261" duration="10714000" />
       <workItem from="1599884115094" duration="17171000" />
-      <workItem from="1599931548734" duration="24793000" />
+      <workItem from="1599931548734" duration="25104000" />
+      <workItem from="1600016252778" duration="17292000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -287,6 +324,11 @@
           <url>file://$PROJECT_DIR$/config/urls.py</url>
           <line>15</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/apps/profiles/views.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

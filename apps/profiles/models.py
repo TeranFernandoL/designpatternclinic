@@ -107,6 +107,11 @@ class Cita(models.Model, Subject, Strategy):
         CANCELED = 'CANCELED'
         TERMINADO = 'TERMINADO'
 
+    class Type(Enum):
+        NORMAL = 'NORMAL'
+        EMERGENCIA = 'EMERGENCIA'
+        DOMICILIO = 'DOMICILIO'
+
     _state: int = None
 
     _observers: List[Observer] = []
@@ -117,6 +122,7 @@ class Cita(models.Model, Subject, Strategy):
     motivo = models.TextField(blank=True, null=True)
     estado = models.CharField(blank=True, null=True, max_length=200,
                               choices=[(item.name, item.value) for item in State])
+    type = models.CharField(blank=True, null=True, max_length=200, choices=[(item.name, item.value) for item in Type])
     diagnostico = models.TextField(blank=True, null=True)
 
     def __str__(self):

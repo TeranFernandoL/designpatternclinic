@@ -211,9 +211,15 @@ class UpdateUserForm(forms.ModelForm):
             return self.cleaned_data.get('telefono')
 
 
+class UpdateCitaForm(forms.ModelForm):
+    class Meta:
+        model = Cita
+        fields = ('diagnostico',)
+
+
 class RegistroCitaForm(forms.ModelForm):
     medico = forms.ModelChoiceField(queryset=Medico.objects.all(),
-                                      widget=forms.Select(attrs={'class': 'form-control'}))
+                                    widget=forms.Select(attrs={'class': 'form-control'}))
     fecha = forms.DateField(required=False)
 
     class Meta:
