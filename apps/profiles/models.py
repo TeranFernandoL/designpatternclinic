@@ -6,9 +6,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from .behaviors import *
 from .patterns.observer import Observer, Subject
 from .patterns.strategy import *
-from .patterns.decorator import *
-from .patterns.singleton import *
-from .patterns.factory import *
 from .patterns.state import *
 
 from abc import ABC, abstractmethod
@@ -103,40 +100,19 @@ class Cita(models.Model, Subject):
             pass
 
     class CitaRegistrada(State):
-        def handle1(self,data):
-            print("registrado 1")
+        def handle1(self, data):
             data.estado = 'REGISTRADO'
             data.save()
             self.context.transition_to(Cita.CitaCompletada())
 
-        def handle2(self,data):
-            print("registrado 2")
-            data.estado = 'REGISTRADO'
-            data.save()
-            self.context.transition_to(Cita.CitaCancelada())
-
     class CitaCompletada(State):
         def handle1(self, data):
-            print("terminado 1")
             data.estado = 'TERMINADO'
             data.save()
             pass
-
-        def handle2( self,data):
-            print("terminado 2")
-            data.estado = 'TERMINADO'
-            data.save()
-            self.context.transition_to(Cita.CitaCancelada())
 
     class CitaCancelada(State):
-        def handle1(self,data):
-            print("terminado 1")
-            data.estado = 'CANCELED'
-            data.save()
-            pass
-
-        def handle2(self,data):
-            print("terminado 2 ")
+        def handle1(self, data):
             data.estado = 'CANCELED'
             data.save()
             pass

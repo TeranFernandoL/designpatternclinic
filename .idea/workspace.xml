@@ -5,9 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/profiles/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/profiles/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/patterns/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/decorator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/factory.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/observer.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/patterns/observer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/singleton.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/patterns/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/state2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings/local.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +290,7 @@
       <workItem from="1599884115094" duration="17171000" />
       <workItem from="1599931548734" duration="25104000" />
       <workItem from="1600016252778" duration="35499000" />
-      <workItem from="1600102787798" duration="13341000" />
+      <workItem from="1600102787798" duration="17191000" />
     </task>
     <servers />
   </component>
@@ -313,6 +317,11 @@
           <url>file://$PROJECT_DIR$/config/urls.py</url>
           <line>15</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/apps/profiles/models.py</url>
+          <line>84</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -232,7 +232,7 @@ class RegistroCitaForm(forms.ModelForm):
 
     def save(self, commit=True, user=None):
         cita = Cita.objects.create(medico=self.cleaned_data.get('medico'), fecha=self.cleaned_data.get('fecha'),
-                                   motivo=self.cleaned_data.get('motivo'), estado='REGISTRADO',
+                                   motivo=self.cleaned_data.get('motivo'),
                                    type=self.cleaned_data.get('type'))
         contextstate = ContextState(cita.CitaRegistrada())
         contextstate.request1(cita)

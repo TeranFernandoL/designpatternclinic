@@ -13,7 +13,6 @@ class ContextState:
         self._state.context = self
 
     def request1(self, data):
-        print(data)
         self._state.handle1(data)
 
     def request2(self, data):
