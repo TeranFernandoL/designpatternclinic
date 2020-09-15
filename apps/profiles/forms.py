@@ -3,6 +3,7 @@ import warnings
 from .models import *
 from django.contrib.auth import authenticate, get_user_model
 from .patterns.strategy import Context
+from .patterns.state import ContextState, State
 
 
 class AuthenticationForm(forms.Form):
@@ -233,7 +234,9 @@ class RegistroCitaForm(forms.ModelForm):
         cita = Cita.objects.create(medico=self.cleaned_data.get('medico'), fecha=self.cleaned_data.get('fecha'),
                                    motivo=self.cleaned_data.get('motivo'), estado='REGISTRADO',
                                    type=self.cleaned_data.get('type'))
-        strategy = self.reserva(self.cleaned_data.get('type'))
+        contextstate = ContextState(cita.CitaRegistrada())
+        contextstate.request1(cita)
+        strategy = self.reserva(cita.type)
         context = Context(strategy)
         context.do_some_business_logic(cita)
         return cita

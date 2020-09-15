@@ -2,8 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
-class Context:
-
+class ContextState:
     _state = None
 
     def __init__(self, state):
@@ -13,11 +12,12 @@ class Context:
         self._state = state
         self._state.context = self
 
-    def request1(self):
-        self._state.handle1()
+    def request1(self, data):
+        print(data)
+        self._state.handle1(data)
 
-    def request2(self):
-        self._state.handle2()
+    def request2(self, data):
+        self._state.handle2(data)
 
 
 class State:
@@ -31,32 +31,9 @@ class State:
         self._context = context
 
     @abstractmethod
-    def handle1(self):
+    def handle1(self, data):
         pass
 
     @abstractmethod
-    def handle2(self):
+    def handle2(self, data):
         pass
-
-
-class ConcreteStateA(State):
-    def handle1(self):
-        self.context.transition_to(ConcreteStateB())
-
-    def handle2(self):
-        pass
-
-class ConcreteStateB(State):
-    def handle1(self):
-        pass
-
-    def handle2(self):
-        self.context.transition_to(ConcreteStateA())
-
-
-if __name__ == "__main__":
-    # The client code.
-
-    context = Context(ConcreteStateA())
-    context.request1()
-    context.request2()

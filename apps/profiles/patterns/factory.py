@@ -9,7 +9,7 @@ class Creator:
 
     def some_operation(self):
         product = self.factory_method()
-        result = f"Creator: The same creator's code has just worked with {product.operation()}"
+        result = product.operation()
         return result
 
 

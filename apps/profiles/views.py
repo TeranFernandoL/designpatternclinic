@@ -88,8 +88,8 @@ class UpdateCitaView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         self.object = form.save()
         cita = Cita.objects.get(id=self.object.id)
-        cita.estado = "TERMINADO"
-        cita.save()
+        contextstate = ContextState(cita.CitaCompletada())
+        contextstate.request1(cita)
         messages.add_message(self.request, messages.SUCCESS, 'Informacion editada.')
         return super(ModelFormMixin, self).form_valid(form)
 
@@ -233,8 +233,8 @@ class ListCitasDiagnosticarView(ListView, LoginRequiredMixin):
 class CancelCitaView(View, LoginRequiredMixin):
     def get(self, *args, **kwargs):
         cita = Cita.objects.get(id=self.kwargs['pk'])
-        cita.estado = 'CANCELED'
-        cita.save()
+        contextstate = ContextState(cita.CitaCancelada())
+        contextstate.request1(cita)
         return redirect(reverse_lazy('clinico:mis_citas'))
 
 
@@ -260,7 +260,7 @@ class ExportPdf:
         p.drawString(200, 200, subject.direccion_paciente())
         p.drawString(200, 100, subject.motivo)
         p.drawString(200, 500, subject.estado)
-        p.drawString(200, 50,  subject.diagnostico)
+        p.drawString(200, 50, subject.diagnostico)
         p.showPage()
         p.save()
         buffer.seek(0)

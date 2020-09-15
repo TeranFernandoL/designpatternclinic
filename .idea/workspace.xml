@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34f1e8d9-7c5d-4388-93f9-9a7f05836f25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/profiles/patterns/state2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/55a7506d-aaf0-4774-abad-adbd184746ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/55a7506d-aaf0-4774-abad-adbd184746ce.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/profiles/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/profiles/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/patterns/factory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/patterns/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/profiles/patterns/strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/patterns/strategy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/profiles/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,7 +118,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.state2">
+  <component name="RunManager" selected="Python.factory">
     <configuration name="adapter" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="dessignpatterns" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,7 +141,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="decorator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="factory" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="dessignpatterns" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -152,12 +149,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apps/profiles" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apps/profiles/patterns" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apps/profiles/decorator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/apps/profiles/patterns/factory.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -257,11 +254,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.factory" />
         <item itemvalue="Python.state2" />
         <item itemvalue="Python.state" />
         <item itemvalue="Python.adapter" />
         <item itemvalue="Python.strategy (1)" />
-        <item itemvalue="Python.decorator" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +286,7 @@
       <workItem from="1599884115094" duration="17171000" />
       <workItem from="1599931548734" duration="25104000" />
       <workItem from="1600016252778" duration="35499000" />
-      <workItem from="1600102787798" duration="3517000" />
+      <workItem from="1600102787798" duration="13341000" />
     </task>
     <servers />
   </component>
@@ -317,11 +314,6 @@
           <line>15</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/apps/profiles/views.py</url>
-          <line>47</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -329,12 +321,12 @@
     <SUITE FILE_PATH="coverage/dessignpatterns$sngleton.coverage" NAME="sngleton Coverage Results" MODIFIED="1599811407895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles" />
     <SUITE FILE_PATH="coverage/dessignpatterns$test.coverage" NAME="test Coverage Results" MODIFIED="1599717584495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles" />
     <SUITE FILE_PATH="coverage/dessignpatterns$strategy.coverage" NAME="strategy Coverage Results" MODIFIED="1599810984351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles" />
-    <SUITE FILE_PATH="coverage/dessignpatterns$state2.coverage" NAME="state2 Coverage Results" MODIFIED="1600081430806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles/patterns" />
+    <SUITE FILE_PATH="coverage/dessignpatterns$state2.coverage" NAME="state2 Coverage Results" MODIFIED="1600131357810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles/patterns" />
     <SUITE FILE_PATH="coverage/dessignpatterns$observer.coverage" NAME="observer Coverage Results" MODIFIED="1599723270060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles" />
     <SUITE FILE_PATH="coverage/dessignpatterns$decorator.coverage" NAME="decorator Coverage Results" MODIFIED="1599890299550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles" />
     <SUITE FILE_PATH="coverage/dessignpatterns$strategy__1_.coverage" NAME="strategy (1) Coverage Results" MODIFIED="1600068382434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles/patterns" />
     <SUITE FILE_PATH="coverage/dessignpatterns$state.coverage" NAME="state Coverage Results" MODIFIED="1600081352547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles/patterns" />
     <SUITE FILE_PATH="coverage/dessignpatterns$adapter.coverage" NAME="adapter Coverage Results" MODIFIED="1600072898459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles/patterns" />
-    <SUITE FILE_PATH="coverage/dessignpatterns$factory.coverage" NAME="factory Coverage Results" MODIFIED="1599813295675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles" />
+    <SUITE FILE_PATH="coverage/dessignpatterns$factory.coverage" NAME="factory Coverage Results" MODIFIED="1600138477833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apps/profiles/patterns" />
   </component>
 </project>
