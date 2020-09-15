@@ -255,12 +255,19 @@ class ExportPdf:
     def some_view(self, subject):
         buffer = io.BytesIO()
         p = canvas.Canvas(buffer)
-        p.drawString(200, 400, subject.nombre_paciente())
-        p.drawString(200, 300, subject.apellido_paciente())
-        p.drawString(200, 200, subject.direccion_paciente())
-        p.drawString(200, 100, subject.motivo)
-        p.drawString(200, 500, subject.estado)
-        p.drawString(200, 50, subject.diagnostico)
+        p.drawString(100, 400, subject.nombre_paciente())
+        p.drawString(100, 350, subject.apellido_paciente())
+        p.drawString(100, 300, subject.direccion_paciente())
+        p.drawString(100, 250, subject.motivo)
+        p.drawString(100, 200, subject.estado)
+        p.drawString(100, 150, subject.diagnostico)
+        p.drawString(100, 100, subject.type)
+        if subject.domicilio:
+            p.drawString(100, 50, "Cita a Domicilio")
+        else:
+            p.drawString(100, 25, " No es Cita a domicilio")
+        if subject.sala is not None:
+            p.drawString(100, 5, subject.sala)
         p.showPage()
         p.save()
         buffer.seek(0)

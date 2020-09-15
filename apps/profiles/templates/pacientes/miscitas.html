@@ -11,6 +11,7 @@
                     <th scope="col">Medico</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -22,6 +23,7 @@
                         <td>{{ cita.medico }}</td>
                         <td>{{ cita.fecha }}</td>
                         <td>{{ cita.estado }}</td>
+                        <td>{{ cita.type}}</td>
                         <td>
                             {% if cita.estado == 'REGISTRADO' %}
                                 <a href="{% url 'clinico:cancel_cita' pk=cita.id %}" class="btn btn-site btn-lost">

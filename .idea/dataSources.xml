@@ -7,5 +7,13 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/designpatterndb</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="3f455d4e-09cc-473c-8b52-b967bc1c164b">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/settings/local.py</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/designpatterndb</jdbc-url>
+    </data-source>
   </component>
 </project>

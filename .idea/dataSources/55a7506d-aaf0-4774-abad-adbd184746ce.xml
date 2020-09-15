@@ -14,24 +14,24 @@
       <Owner>shinobu</Owner>
       <IntrospectionStateNumber>1910</IntrospectionStateNumber>
       <Current>1</Current>
-      <Relations>sequence|table|92253|92255|1
-sequence|table|92271|92273|1
-sequence|table|92382|92384|1
-sequence|table|92079|92081|1
+      <Relations>sequence|table|92382|92384|1
 sequence|table|92090|92092|1
 sequence|table|92100|92102|1
 sequence|table|92108|92110|1
 sequence|table|92118|92120|1
 sequence|table|92152|92154|1
+sequence|table|92079|92081|1
+sequence|table|92221|92223|1
+sequence|table|92253|92255|1
+sequence|table|92271|92273|1
+sequence|table|92232|92234|1
+sequence|table|92240|92242|1
 sequence|table|92164|92166|1
 sequence|table|92172|92174|1
 sequence|table|92180|92182|1
 sequence|table|92191|92193|1
 sequence|table|92202|92204|1
 sequence|table|92210|92212|1
-sequence|table|92221|92223|1
-sequence|table|92232|92234|1
-sequence|table|92240|92242|1
 </Relations>
     </database>
     <database id="4" parent="1" name="ferdb">
