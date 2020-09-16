@@ -9,19 +9,28 @@ Se debe tener instalado en el proyecto :
 
 1.- Clonar el Proyecto 
 
+```
 git clone https://github.com/TeranFernandoL/designpatternclinic.git
+```
 
 2.- De preferencia usar virtualenv para crear un entorno y instalar las librerias 
 
+```
 virtualenv -p python3 "nombre_virtualenv"
+```
 
 3.- Con el virtualenv activado situarse en el proyecto y instalar las librerias 
 
+```
 pip install -r requirements.txt
+```
 
 4.- Una vez instaladas las librerias entrar a POSTGRES y crear la base de datos 
 
-CREATE DATABASE "Nombre_Database"
+```
+CREATE DATABASE "NOMBRE_DATABASE"
+```
+
 
 5.- Una vez creada la base de datos entrar a la raiz ..config/settings/local.py y setear los valores de tu BD
 
